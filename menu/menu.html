@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Arepas</title>
+    <link rel="stylesheet" href="./css/stile.css">
+    <link rel="icon" href="./img/icono.png" >
+</head>
+<body>
+    <div class="menu-container">
+        <h1>Menú de Arepas</h1>
+        <div class="menu">
+            <div class="item">
+            <p>Arepa Sola</p>
+            </div>
+            <div class="price">
+            <p>$ 800</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="item">
+            <p>Arepa con Queso</p>
+            </div>
+            <div class="price">
+            <p>$ 2.000</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="item">
+            <p>Arepa con Jamón y Queso</p>
+            </div>
+            <div class="price">
+            <p>$ 3.000</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="item">
+            <p>Arepa con Chorizo</p>
+            </div>
+            <div class="price">
+            <p>$ 4.000</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="item">
+            <p>Arepa con Pincho Solo Pollo</p>
+            </div>
+            <div class="price">
+            <p>$ 4.500</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="item">
+            <p>Arepa con Pincho Mixto (pollo, cerdo y chorizo)</p>
+            </div>
+            <div class="price">
+            <p>$ 5.000</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="item">
+            <p>Arepa con Chorizo, Jamón y Doble Queso</p>
+            </div>
+            <div class="price">
+            <p>$ 7.000</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="item">
+            <p>Arepa Mixta (carne, pollo, jamón y queso)</p>
+            </div>
+            <div class="price">
+            <p>$ 9.000</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="item">
+            <p>Arepa Super (carne, pollo, chorizo, jamón y queso)</p>
+            </div>
+            <div class="price">
+            <p>$ 12.500</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="item">
+            <p>Gaseosa</p>
+            </div>
+            <div class="price">
+            <p>$ 1.500</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="item">
+            <p>Tajada Adicional (queso o jamón)</p>
+            </div>
+            <div class="price">
+                <p>$ 1.000</p>
+                </div>
+        </div>
+    </div>
+    <div class="pay">
+        <h1>NUMERO DE NEQUI Y DAVIPLATA</h1>
+        <div class="numero">
+            <p id="phoneNumber">3103045405</p>
+        </div>
+        <div class="botoncopiar">
+            <button id="copyButton">COPIAR</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const phoneNumber = document.getElementById('phoneNumber').textContent;
+            navigator.clipboard.writeText(phoneNumber).then(function() {
+                showNotification('Número copiado: ' + phoneNumber);
+            }, function(err) {
+                showNotification('No se pudo copiar el número', true);
+                console.error('No se pudo copiar el número: ', err);
+            });
+        });
+    
+        function showNotification(message, isError = false) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            if (isError) {
+                notification.classList.add('error');
+            }
+            notification.textContent = message;
+            document.body.appendChild(notification);
+    
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+    
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+    </script>
+    
+</body>
+</html>
